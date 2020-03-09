@@ -1,0 +1,32 @@
+version: "3"
+services:
+  react-app:
+    container_name: react-app
+    build: ./react-app
+    restart: always
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./react-app:/react-app
+      - /react-app/node_modules
+    links:
+      - api-server
+  api-server:
+    container_name: api-server
+    build: ./api-server
+    restart: always
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./api-server:/api-server
+      - /api-server/node_modules
+    depends_on:
+      - mongo
+  mongo:
+    container_name: stack-mongo
+    image: mongo
+    expose:
+      - "27017"
+    restart: always
+    ports:
+      - "27017:27017"
