@@ -9,8 +9,6 @@ services:
     volumes:
       - ./react-app:/react-app
       - /react-app/node_modules
-    links:
-      - api-server
   api-server:
     container_name: api-server
     build: ./api-server
@@ -22,11 +20,11 @@ services:
       - /api-server/node_modules
     depends_on:
       - mongo
+    links:
+      - mongo
   mongo:
     container_name: stack-mongo
     image: mongo
-    expose:
-      - "27017"
     restart: always
     ports:
-      - "27017:27017"
+      - "27019:27017"
