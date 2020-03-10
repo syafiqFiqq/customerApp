@@ -12,3 +12,5 @@
 
 ## To view the App
 1. http://localhost:3000
+
+![image](https://drive.google.com/uc?export=view&id=1IsPqZN0BZwfK4xCUAjsZImkWYAgpmZBa)
